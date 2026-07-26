@@ -6,7 +6,23 @@ import Image from "next/image";
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [particles, setParticles] = useState([]);
   const observerRef = useRef(null);
+
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 15 }, () => ({
+        left: `${Math.random() * 100}%`,
+        width: `${4 + Math.random() * 8}px`,
+        height: `${4 + Math.random() * 8}px`,
+        background: `hsl(${140 + Math.random() * 40}, 60%, ${
+          60 + Math.random() * 20
+        }%)`,
+        animationDuration: `${8 + Math.random() * 12}s`,
+        animationDelay: `${Math.random() * 8}s`,
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,20 +197,11 @@ export default function Home() {
 
         {/* Floating particles */}
         <div className="hero-particles">
-          {[...Array(15)].map((_, i) => (
+          {particles.map((p, i) => (
             <div
               key={i}
               className="particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                width: `${4 + Math.random() * 8}px`,
-                height: `${4 + Math.random() * 8}px`,
-                background: `hsl(${140 + Math.random() * 40}, 60%, ${
-                  60 + Math.random() * 20
-                }%)`,
-                animationDuration: `${8 + Math.random() * 12}s`,
-                animationDelay: `${Math.random() * 8}s`,
-              }}
+              style={p}
             />
           ))}
         </div>
