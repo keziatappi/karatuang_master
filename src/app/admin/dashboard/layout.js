@@ -23,17 +23,17 @@ export default function DashboardLayout({ children }) {
         </div>
         
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
-          <Link href="/admin/dashboard" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.5rem', borderRadius: '4px', display: 'block' }}>
-            Dashboard
+          <Link href="/admin/dashboard" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
+            🏠 Dashboard
           </Link>
-          <Link href="#" style={{ color: '#9ca3af', textDecoration: 'none', padding: '0.5rem', borderRadius: '4px', display: 'block' }}>
-            Berita
+          <Link href="/admin/dashboard/berita" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
+            📰 Berita & Kegiatan
           </Link>
-          <Link href="#" style={{ color: '#9ca3af', textDecoration: 'none', padding: '0.5rem', borderRadius: '4px', display: 'block' }}>
-            Galeri
+          <Link href="/admin/dashboard/perangkat" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
+            👥 Perangkat Kelurahan
           </Link>
-          <Link href="#" style={{ color: '#9ca3af', textDecoration: 'none', padding: '0.5rem', borderRadius: '4px', display: 'block' }}>
-            Data Penduduk
+          <Link href="/admin/dashboard/galeri" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
+            🖼️ Galeri (Segera)
           </Link>
           
           <div style={{ marginTop: 'auto' }}>
