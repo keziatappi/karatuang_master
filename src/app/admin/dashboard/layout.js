@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LogoutButton from '@/components/LogoutButton';
+import { Home, Newspaper, Users } from 'lucide-react';
 
 export const metadata = {
   title: 'Admin Dashboard - Karatuang',
@@ -23,17 +24,14 @@ export default function DashboardLayout({ children }) {
         </div>
         
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
-          <Link href="/admin/dashboard" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
-            🏠 Dashboard
+          <Link href="/admin/dashboard" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
+            <Home size={20} /> Dashboard
           </Link>
-          <Link href="/admin/dashboard/berita" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
-            📰 Berita & Kegiatan
+          <Link href="/admin/dashboard/berita" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
+            <Newspaper size={20} /> Berita & Kegiatan
           </Link>
-          <Link href="/admin/dashboard/perangkat" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
-            👥 Perangkat Kelurahan
-          </Link>
-          <Link href="/admin/dashboard/galeri" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'block', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#374151' } }}>
-            🖼️ Galeri (Segera)
+          <Link href="/admin/dashboard/perangkat" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
+            <Users size={20} /> Perangkat Kelurahan
           </Link>
           
           <div style={{ marginTop: 'auto' }}>
