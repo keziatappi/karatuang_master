@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
-import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, Users, ArrowRight, MapPin, Map } from "lucide-react";
+import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, Users, ArrowRight, MapPin, Map, Target, Flag, Network, UserCheck } from "lucide-react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -109,6 +109,16 @@ export default function Home() {
               </a>
             </li>
             <li>
+              <a href="#profil" onClick={() => scrollToSection("profil")}>
+                Profil
+              </a>
+            </li>
+            <li>
+              <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
+                Pemerintahan
+              </a>
+            </li>
+            <li>
               <a href="#tentang" onClick={() => scrollToSection("tentang")}>
                 Tentang
               </a>
@@ -134,11 +144,6 @@ export default function Home() {
             <li>
               <a href="#lokasi" onClick={() => scrollToSection("lokasi")}>
                 Lokasi
-              </a>
-            </li>
-            <li>
-              <a href="#galeri" onClick={() => scrollToSection("galeri")}>
-                Galeri
               </a>
             </li>
           </ul>
@@ -179,6 +184,12 @@ export default function Home() {
         <a href="#beranda" onClick={() => scrollToSection("beranda")}>
           Beranda
         </a>
+        <a href="#profil" onClick={() => scrollToSection("profil")}>
+          Profil
+        </a>
+        <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
+          Pemerintahan
+        </a>
         <a href="#tentang" onClick={() => scrollToSection("tentang")}>
           Tentang
         </a>
@@ -193,9 +204,6 @@ export default function Home() {
         </a>
         <a href="#lokasi" onClick={() => scrollToSection("lokasi")}>
           Lokasi
-        </a>
-        <a href="#galeri" onClick={() => scrollToSection("galeri")}>
-          Galeri
         </a>
       </div>
 
@@ -329,6 +337,167 @@ export default function Home() {
               <div className="hero-float-text">
                 <strong>Surga Tersembunyi</strong>
                 <span>Keindahan alam yang masih alami</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROFIL SECTION */}
+      <section className="section" id="profil">
+        <div className="container">
+          <div className="section-header fade-in">
+            <div className="section-label">
+              <span className="section-label-line"></span>
+              Profil Kelurahan
+              <span className="section-label-line"></span>
+            </div>
+            <h2 className="section-title">
+              Visi & Misi <span className="highlight">Karatuang</span>
+            </h2>
+            <p className="section-description">
+              Mewujudkan Kelurahan Karatuang yang maju, mandiri, dan sejahtera berlandaskan kearifan lokal.
+            </p>
+          </div>
+
+          <div className="profil-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            <div className="profil-card fade-in-left" style={{ backgroundColor: '#fff', padding: '2.5rem', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(3)' }}>
+                <Target size={100} />
+              </div>
+              <div className="profil-icon" style={{ width: '60px', height: '60px', borderRadius: '12px', backgroundColor: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Target size={32} />
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1f2937' }}>Visi</h3>
+              <p style={{ color: '#4b5563', lineHeight: '1.7' }}>
+                "Terwujudnya Masyarakat Kelurahan Karatuang yang Religius, Mandiri, Sejahtera, dan Berbudaya melalui Pelayanan Prima serta Pemanfaatan Potensi Lokal yang Berkelanjutan."
+              </p>
+            </div>
+
+            <div className="profil-card fade-in-right" style={{ backgroundColor: '#fff', padding: '2.5rem', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(3)' }}>
+                <Flag size={100} />
+              </div>
+              <div className="profil-icon" style={{ width: '60px', height: '60px', borderRadius: '12px', backgroundColor: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Flag size={32} />
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1f2937' }}>Misi</h3>
+              <ul style={{ color: '#4b5563', lineHeight: '1.7', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <li>Meningkatkan kualitas sumber daya manusia melalui pendidikan dan kesehatan.</li>
+                <li>Meningkatkan tata kelola pemerintahan yang baik dan bersih (Good Governance).</li>
+                <li>Mendorong pertumbuhan ekonomi kerakyatan berbasis potensi lokal.</li>
+                <li>Melestarikan nilai-nilai budaya dan kearifan lokal masyarakat.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="demographics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '3rem' }}>
+            {[
+               { icon: <MapPin size={24} />, label: 'Luas Wilayah', value: '± 5.2 km²' },
+               { icon: <Users size={24} />, label: 'Total Penduduk', value: '5,000+ Jiwa' },
+               { icon: <Building2 size={24} />, label: 'Jumlah RW', value: '4 RW' },
+               { icon: <Network size={24} />, label: 'Jumlah RT', value: '12 RT' },
+            ].map((stat, i) => (
+              <div key={i} className="demo-card fade-in" style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '1rem', transitionDelay: `${i * 0.1}s` }}>
+                <div style={{ backgroundColor: '#22c55e', color: 'white', width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {stat.icon}
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '0.25rem' }}>{stat.label}</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0f172a' }}>{stat.value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PEMERINTAHAN SECTION */}
+      <section className="section section-alt" id="pemerintahan">
+        <div className="container">
+          <div className="section-header fade-in">
+            <div className="section-label">
+              <span className="section-label-line"></span>
+              Struktur Organisasi
+              <span className="section-label-line"></span>
+            </div>
+            <h2 className="section-title">
+              Pemerintahan <span className="highlight">Karatuang</span>
+            </h2>
+            <p className="section-description">
+              Susunan organisasi dan tata kerja aparatur pemerintahan Kelurahan Karatuang dalam melayani masyarakat.
+            </p>
+          </div>
+
+          <div className="org-chart" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '3rem', position: 'relative' }}>
+            {/* Lurah */}
+            <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '2px solid #22c55e', padding: '1.5rem 2.5rem', borderRadius: '12px', textAlign: 'center', minWidth: '250px', zIndex: 2, boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+              <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                <UserCheck size={40} />
+              </div>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Lurah</h3>
+              <p style={{ color: '#22c55e', fontWeight: '600', fontSize: '0.875rem' }}>Lurah Karatuang</p>
+            </div>
+
+            {/* Line down */}
+            <div style={{ width: '2px', height: '40px', backgroundColor: '#cbd5e1', zIndex: 1 }}></div>
+            
+            {/* Seklur */}
+            <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 2rem', borderRadius: '12px', textAlign: 'center', minWidth: '220px', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+              <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                <User size={30} />
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Seklur</h3>
+              <p style={{ color: '#64748b', fontSize: '0.875rem' }}>Sekretaris Lurah</p>
+            </div>
+
+            {/* Line down to Kasi */}
+            <div style={{ width: '2px', height: '40px', backgroundColor: '#cbd5e1', zIndex: 1 }}></div>
+            
+            {/* Horizontal Line connecting Kasi */}
+            <div style={{ display: 'flex', width: '100%', maxWidth: '900px', padding: '0 1rem' }}>
+              <div style={{ flex: 1, position: 'relative' }}>
+                <div style={{ width: '50%', height: '2px', backgroundColor: '#cbd5e1', marginLeft: 'auto' }}></div>
+                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
+              </div>
+              <div style={{ flex: 1, position: 'relative' }}>
+                <div style={{ width: '100%', height: '2px', backgroundColor: '#cbd5e1' }}></div>
+                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
+              </div>
+              <div style={{ flex: 1, position: 'relative' }}>
+                <div style={{ width: '50%', height: '2px', backgroundColor: '#cbd5e1' }}></div>
+                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
+              </div>
+            </div>
+
+            {/* Kasi Cards */}
+            <div style={{ display: 'flex', width: '100%', maxWidth: '900px', padding: '0 1rem' }}>
+              <div style={{ flex: 1, padding: '0 0.5rem' }}>
+                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                    <User size={24} />
+                  </div>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
+                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Pemerintahan</p>
+                </div>
+              </div>
+              <div style={{ flex: 1, padding: '0 0.5rem' }}>
+                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)', transitionDelay: '0.1s' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                    <User size={24} />
+                  </div>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
+                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Trantib</p>
+                </div>
+              </div>
+              <div style={{ flex: 1, padding: '0 0.5rem' }}>
+                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)', transitionDelay: '0.2s' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                    <User size={24} />
+                  </div>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
+                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Pelayanan Umum</p>
+                </div>
               </div>
             </div>
           </div>
@@ -742,91 +911,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GALLERY SECTION */}
-      <section className="section" id="galeri">
-        <div className="container">
-          <div className="section-header fade-in">
-            <div className="section-label">
-              <span className="section-label-line"></span>
-              Galeri Foto
-              <span className="section-label-line"></span>
-            </div>
-            <h2 className="section-title">Momen Indah Karatuang</h2>
-            <p className="section-description">
-              Koleksi foto keindahan alam, wisata, dan kehidupan masyarakat
-              Kelurahan Karatuang yang memukau mata.
-            </p>
-          </div>
 
-          <div className="gallery-grid">
-            <div className="gallery-item scale-in" style={{ transitionDelay: "0.1s" }}>
-              <Image
-                src="/images/waterfall-hero.png"
-                alt="Air terjun bertingkat Karatuang"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="gallery-item-overlay">
-                <span className="gallery-item-caption">
-                  Air Terjun Bertingkat
-                </span>
-              </div>
-            </div>
-            <div className="gallery-item scale-in" style={{ transitionDelay: "0.2s" }}>
-              <Image
-                src="/images/waterfall-wisata.png"
-                alt="Air terjun tersembunyi"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <div className="gallery-item-overlay">
-                <span className="gallery-item-caption">
-                  Air Terjun Tersembunyi
-                </span>
-              </div>
-            </div>
-            <div className="gallery-item scale-in" style={{ transitionDelay: "0.3s" }}>
-              <Image
-                src="/images/agriculture.png"
-                alt="Persawahan Karatuang"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <div className="gallery-item-overlay">
-                <span className="gallery-item-caption">
-                  Persawahan Hijau
-                </span>
-              </div>
-            </div>
-            <div className="gallery-item scale-in" style={{ transitionDelay: "0.4s" }}>
-              <Image
-                src="/images/plantation.png"
-                alt="Perkebunan Karatuang"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <div className="gallery-item-overlay">
-                <span className="gallery-item-caption">
-                  Perkebunan Kopi
-                </span>
-              </div>
-            </div>
-            <div className="gallery-item scale-in" style={{ transitionDelay: "0.5s" }}>
-              <Image
-                src="/images/fishing.png"
-                alt="Kehidupan nelayan"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <div className="gallery-item-overlay">
-                <span className="gallery-item-caption">
-                  Pesisir Bantaeng
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA SECTION */}
       <section className="cta-section">
@@ -930,6 +1015,16 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
+                  <a href="#profil" onClick={() => scrollToSection("profil")}>
+                    Profil
+                  </a>
+                </li>
+                <li>
+                  <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
+                    Pemerintahan
+                  </a>
+                </li>
+                <li>
                   <a href="#tentang" onClick={() => scrollToSection("tentang")}>
                     Tentang
                   </a>
@@ -945,11 +1040,6 @@ export default function Home() {
                     onClick={() => scrollToSection("sumber-daya")}
                   >
                     Sumber Daya
-                  </a>
-                </li>
-                <li>
-                  <a href="#galeri" onClick={() => scrollToSection("galeri")}>
-                    Galeri
                   </a>
                 </li>
               </ul>
