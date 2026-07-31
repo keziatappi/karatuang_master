@@ -73,7 +73,7 @@ export default function Home() {
         observerRef.current.disconnect();
       }
     };
-  }, []);
+  }, [newsList]);
 
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
@@ -760,8 +760,7 @@ export default function Home() {
           <div className="news-grid">
             {newsList.length > 0 ? (
               <>
-                <div className="news-featured fade-in-left">
-                  <Link href={`/berita/${newsList[0].id}`} style={{textDecoration: 'none', color: 'inherit', display: 'block', height: '100%'}}>
+                <Link href={`/berita/${newsList[0].id}`} className="news-featured fade-in-left" style={{textDecoration: 'none', color: 'inherit', display: 'block'}}>
                     <Image
                       src={newsList[0].image_url || "/images/waterfall-hero.png"}
                       alt={newsList[0].title}
@@ -792,8 +791,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </Link>
-                </div>
+                </Link>
 
                 <div className="news-list">
                   {newsList.slice(1).map((item, index) => (
