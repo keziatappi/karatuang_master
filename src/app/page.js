@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
-import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, ArrowRight } from "lucide-react";
+import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, Users, ArrowRight, MapPin, Map } from "lucide-react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -692,7 +692,7 @@ export default function Home() {
 
               <div className="map-details">
                 <div className="map-detail-item">
-                  <div className="map-detail-icon location">📍</div>
+                  <div className="map-detail-icon location"><MapPin size={24} /></div>
                   <div className="map-detail-text">
                     <strong>Alamat</strong>
                     <span>
@@ -702,7 +702,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="map-detail-item">
-                  <div className="map-detail-icon area">🗺️</div>
+                  <div className="map-detail-icon area"><Map size={24} /></div>
                   <div className="map-detail-text">
                     <strong>Wilayah</strong>
                     <span>
@@ -711,14 +711,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="map-detail-item">
-                  <div className="map-detail-icon population">👥</div>
+                  <div className="map-detail-icon population"><Users size={24} /></div>
                   <div className="map-detail-text">
                     <strong>Kecamatan</strong>
                     <span>Kecamatan Bantaeng</span>
                   </div>
                 </div>
                 <div className="map-detail-item">
-                  <div className="map-detail-icon elevation">⛰️</div>
+                  <div className="map-detail-icon elevation"><Mountain size={24} /></div>
                   <div className="map-detail-text">
                     <strong>Topografi</strong>
                     <span>
