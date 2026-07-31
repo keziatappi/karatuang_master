@@ -2,12 +2,29 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
+import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, ArrowRight } from "lucide-react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [particles, setParticles] = useState([]);
+  const [newsList, setNewsList] = useState([]);
   const observerRef = useRef(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    async function fetchNews() {
+      const { data } = await supabase
+        .from('berita')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(4);
+      if (data) setNewsList(data);
+    }
+    fetchNews();
+  }, []);
 
   useEffect(() => {
     setParticles(
@@ -308,7 +325,7 @@ export default function Home() {
               />
             </div>
             <div className="hero-float-card">
-              <div className="hero-float-icon green">🌿</div>
+              <div className="hero-float-icon green"><Leaf size={24} /></div>
               <div className="hero-float-text">
                 <strong>Surga Tersembunyi</strong>
                 <span>Keindahan alam yang masih alami</span>
@@ -367,19 +384,19 @@ export default function Home() {
 
               <div className="about-features">
                 <div className="about-feature">
-                  <div className="about-feature-icon">🏔️</div>
+                  <div className="about-feature-icon"><Mountain size={24} /></div>
                   <span>Alam Pegunungan</span>
                 </div>
                 <div className="about-feature">
-                  <div className="about-feature-icon">🌾</div>
+                  <div className="about-feature-icon"><Wheat size={24} /></div>
                   <span>Pertanian Subur</span>
                 </div>
                 <div className="about-feature">
-                  <div className="about-feature-icon">🎭</div>
+                  <div className="about-feature-icon"><Palette size={24} /></div>
                   <span>Budaya Kaya</span>
                 </div>
                 <div className="about-feature">
-                  <div className="about-feature-icon">💧</div>
+                  <div className="about-feature-icon"><Droplet size={24} /></div>
                   <span>Air Terjun Eksotis</span>
                 </div>
               </div>
@@ -419,7 +436,7 @@ export default function Home() {
               <div className="tourism-card-overlay"></div>
               <div className="tourism-card-content">
                 <div className="tourism-card-badge">
-                  <span>🌊</span> Wisata Alam
+                  <span><Waves size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Alam
                 </div>
                 <h3 className="tourism-card-title">Air Terjun Bissapu</h3>
                 <p className="tourism-card-desc">
@@ -441,7 +458,7 @@ export default function Home() {
               <div className="tourism-card-overlay"></div>
               <div className="tourism-card-content">
                 <div className="tourism-card-badge">
-                  <span>🏞️</span> Wisata Alam
+                  <span><Trees size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Alam
                 </div>
                 <h3 className="tourism-card-title">Air Terjun Erelebu</h3>
                 <p className="tourism-card-desc">
@@ -463,7 +480,7 @@ export default function Home() {
               <div className="tourism-card-overlay"></div>
               <div className="tourism-card-content">
                 <div className="tourism-card-badge">
-                  <span>🎭</span> Wisata Budaya
+                  <span><Palette size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Budaya
                 </div>
                 <h3 className="tourism-card-title">Kampung Budaya</h3>
                 <p className="tourism-card-desc">
@@ -505,7 +522,7 @@ export default function Home() {
                   height={200}
                   className="resource-card-image"
                 />
-                <div className="resource-card-icon-badge">🌾</div>
+                <div className="resource-card-icon-badge"><Wheat size={24} /></div>
               </div>
               <div className="resource-card-body">
                 <h3 className="resource-card-title">Pertanian</h3>
@@ -532,7 +549,7 @@ export default function Home() {
                   height={200}
                   className="resource-card-image"
                 />
-                <div className="resource-card-icon-badge">☕</div>
+                <div className="resource-card-icon-badge"><Coffee size={24} /></div>
               </div>
               <div className="resource-card-body">
                 <h3 className="resource-card-title">Perkebunan</h3>
@@ -550,32 +567,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="resource-card fade-in" style={{ transitionDelay: "0.3s" }}>
-              <div className="resource-card-image-wrapper">
-                <Image
-                  src="/images/fishing.png"
-                  alt="Perikanan Karatuang"
-                  width={400}
-                  height={200}
-                  className="resource-card-image"
-                />
-                <div className="resource-card-icon-badge">🐟</div>
-              </div>
-              <div className="resource-card-body">
-                <h3 className="resource-card-title">Perikanan & Kelautan</h3>
-                <p className="resource-card-desc">
-                  Kedekatan dengan pesisir Bantaeng menjadikan perikanan sebagai
-                  salah satu sumber penghasilan masyarakat. Hasil laut segar
-                  tersedia melimpah.
-                </p>
-                <div className="resource-card-tags">
-                  <span className="resource-tag">Ikan Laut</span>
-                  <span className="resource-tag">Udang</span>
-                  <span className="resource-tag">Rumput Laut</span>
-                  <span className="resource-tag">Budidaya</span>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -597,195 +589,84 @@ export default function Home() {
           </div>
 
           <div className="news-grid">
-            {/* Featured Article */}
-            <div className="news-featured fade-in-left">
-              <Image
-                src="/images/waterfall-hero.png"
-                alt="Festival Wisata Bantaeng"
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="news-featured-image"
-              />
-              <div className="news-featured-overlay"></div>
-              <div className="news-featured-content">
-                <span className="news-category event">🎉 Event</span>
-                <h3 className="news-featured-title">
-                  Festival Wisata Alam Bantaeng 2026: Karatuang Jadi Sorotan
-                  Utama
-                </h3>
-                <p className="news-featured-excerpt">
-                  Kelurahan Karatuang menjadi destinasi utama dalam Festival
-                  Wisata Alam Bantaeng 2026 yang menampilkan keindahan air
-                  terjun, kuliner tradisional, dan pertunjukan budaya lokal.
-                </p>
-                <div className="news-meta">
-                  <div className="news-meta-item">
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    5 Juli 2026
-                  </div>
-                  <div className="news-meta-item">
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                    Admin Kelurahan
-                  </div>
+            {newsList.length > 0 ? (
+              <>
+                <div className="news-featured fade-in-left">
+                  <Link href={`/berita/${newsList[0].id}`} style={{textDecoration: 'none', color: 'inherit', display: 'block', height: '100%'}}>
+                    <Image
+                      src={newsList[0].image_url || "/images/waterfall-hero.png"}
+                      alt={newsList[0].title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 55vw"
+                      className="news-featured-image"
+                    />
+                    <div className="news-featured-overlay"></div>
+                    <div className="news-featured-content">
+                      <span className={`news-category ${newsList[0].type === 'kegiatan' ? 'event' : ''}`}>
+                        {newsList[0].type === 'kegiatan' ? <PartyPopper size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom', marginRight: '4px'}} /> : <Calendar size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom', marginRight: '4px'}} />}
+                        <span style={{textTransform: 'capitalize'}}>{newsList[0].type}</span>
+                      </span>
+                      <h3 className="news-featured-title">
+                        {newsList[0].title}
+                      </h3>
+                      <p className="news-featured-excerpt">
+                        {newsList[0].excerpt || (newsList[0].content ? newsList[0].content.substring(0, 150) + '...' : '')}
+                      </p>
+                      <div className="news-meta">
+                        <div className="news-meta-item">
+                          <Calendar size={16} />
+                          {new Date(newsList[0].created_at).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})}
+                        </div>
+                        <div className="news-meta-item">
+                          <User size={16} />
+                          Admin Kelurahan
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </div>
-            </div>
 
-            {/* Article List */}
-            <div className="news-list">
-              <div className="news-card fade-in-right" style={{ transitionDelay: "0.1s" }}>
-                <div className="news-card-image-wrapper">
-                  <Image
-                    src="/images/agriculture.png"
-                    alt="Program pertanian"
-                    fill
-                    sizes="180px"
-                    className="news-card-image"
-                  />
-                  <div className="news-card-date-badge">
-                    <span className="day">28</span>
-                    <span className="month">Jun</span>
-                  </div>
+                <div className="news-list">
+                  {newsList.slice(1).map((item, index) => (
+                    <div key={item.id} className="news-card fade-in-right" style={{ transitionDelay: `${(index + 1) * 0.1}s` }}>
+                      <div className="news-card-image-wrapper">
+                        <Image
+                          src={item.image_url || "/images/agriculture.png"}
+                          alt={item.title}
+                          fill
+                          sizes="180px"
+                          className="news-card-image"
+                        />
+                        <div className="news-card-date-badge">
+                          <span className="day">{new Date(item.created_at).getDate()}</span>
+                          <span className="month">{new Date(item.created_at).toLocaleDateString('id-ID', {month: 'short'})}</span>
+                        </div>
+                      </div>
+                      <div className="news-card-body">
+                        <span className={`news-category ${item.type === 'kegiatan' ? 'culture' : ''}`}>
+                          {item.type === 'kegiatan' ? <Palette size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom', marginRight: '4px'}} /> : <Building2 size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom', marginRight: '4px'}} />}
+                          <span style={{textTransform: 'capitalize'}}>{item.type}</span>
+                        </span>
+                        <h4 className="news-card-title">
+                          {item.title}
+                        </h4>
+                        <p className="news-card-excerpt">
+                          {item.excerpt || (item.content ? item.content.substring(0, 100) + '...' : '')}
+                        </p>
+                        <Link href={`/berita/${item.id}`} className="news-read-more" style={{textDecoration: 'none'}}>
+                          Baca Selengkapnya
+                          <ArrowRight size={16} />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="news-card-body">
-                  <span className="news-category">🌾 Pertanian</span>
-                  <h4 className="news-card-title">
-                    Program Intensifikasi Pertanian Berhasil Tingkatkan Hasil
-                    Panen 40%
-                  </h4>
-                  <p className="news-card-excerpt">
-                    Program intensifikasi pertanian yang digagas pemerintah
-                    kelurahan berhasil meningkatkan produktivitas padi dan
-                    palawija di wilayah Karatuang.
-                  </p>
-                  <span className="news-read-more">
-                    Baca Selengkapnya
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </div>
+              </>
+            ) : (
+              <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '3rem', backgroundColor: '#f9fafb', borderRadius: '12px' }}>
+                <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>Belum ada berita atau kegiatan yang dipublikasikan.</p>
               </div>
-
-              <div className="news-card fade-in-right" style={{ transitionDelay: "0.2s" }}>
-                <div className="news-card-image-wrapper">
-                  <Image
-                    src="/images/village-culture.png"
-                    alt="Kegiatan budaya"
-                    fill
-                    sizes="180px"
-                    className="news-card-image"
-                  />
-                  <div className="news-card-date-badge">
-                    <span className="day">15</span>
-                    <span className="month">Jun</span>
-                  </div>
-                </div>
-                <div className="news-card-body">
-                  <span className="news-category culture">🎭 Budaya</span>
-                  <h4 className="news-card-title">
-                    Pelestarian Budaya Lokal: Generasi Muda Karatuang Aktif
-                    Lestarikan Tradisi
-                  </h4>
-                  <p className="news-card-excerpt">
-                    Kelompok pemuda Karatuang menginisiasi program pelestarian
-                    budaya dengan menggelar latihan tarian dan musik tradisional
-                    setiap pekan.
-                  </p>
-                  <span className="news-read-more">
-                    Baca Selengkapnya
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="news-card fade-in-right" style={{ transitionDelay: "0.3s" }}>
-                <div className="news-card-image-wrapper">
-                  <Image
-                    src="/images/plantation.png"
-                    alt="Pembangunan infrastruktur"
-                    fill
-                    sizes="180px"
-                    className="news-card-image"
-                  />
-                  <div className="news-card-date-badge">
-                    <span className="day">02</span>
-                    <span className="month">Jun</span>
-                  </div>
-                </div>
-                <div className="news-card-body">
-                  <span className="news-category development">
-                    🏗️ Pembangunan
-                  </span>
-                  <h4 className="news-card-title">
-                    Perbaikan Jalan Akses Menuju Objek Wisata Air Terjun Segera
-                    Rampung
-                  </h4>
-                  <p className="news-card-excerpt">
-                    Proyek perbaikan jalan akses menuju air terjun Bissapu
-                    ditargetkan selesai akhir bulan ini untuk meningkatkan
-                    kenyamanan wisatawan.
-                  </p>
-                  <span className="news-read-more">
-                    Baca Selengkapnya
-                    <svg
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
