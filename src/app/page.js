@@ -4,26 +4,34 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
-import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, PartyPopper, Building2, Calendar, User, Users, ArrowRight, MapPin, Map, Target, Flag, Network, UserCheck } from "lucide-react";
+import { Leaf, Mountain, Wheat, Palette, Droplet, Waves, Trees, Coffee, Bird, PartyPopper, Building2, Calendar, User, Users, ArrowRight, MapPin, Map, Target, Flag, Network, UserCheck } from "lucide-react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [particles, setParticles] = useState([]);
   const [newsList, setNewsList] = useState([]);
+  const [galeriList, setGaleriList] = useState([]);
   const observerRef = useRef(null);
 
   useEffect(() => {
     const supabase = createClient();
-    async function fetchNews() {
-      const { data } = await supabase
+    async function fetchData() {
+      const { data: newsData } = await supabase
         .from('berita')
         .select('*')
         .order('created_at', { ascending: false })
         .limit(4);
-      if (data) setNewsList(data);
+      if (newsData) setNewsList(newsData);
+      
+      const { data: galeriData } = await supabase
+        .from('galeri')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(6);
+      if (galeriData) setGaleriList(galeriData);
     }
-    fetchNews();
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -73,7 +81,7 @@ export default function Home() {
         observerRef.current.disconnect();
       }
     };
-  }, [newsList]);
+  }, [newsList, galeriList]);
 
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
@@ -108,11 +116,7 @@ export default function Home() {
                 Beranda
               </a>
             </li>
-            <li>
-              <a href="#profil" onClick={() => scrollToSection("profil")}>
-                Profil
-              </a>
-            </li>
+
             <li>
               <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
                 Pemerintahan
@@ -123,11 +127,7 @@ export default function Home() {
                 Tentang
               </a>
             </li>
-            <li>
-              <a href="#wisata" onClick={() => scrollToSection("wisata")}>
-                Wisata
-              </a>
-            </li>
+
             <li>
               <a
                 href="#sumber-daya"
@@ -139,6 +139,11 @@ export default function Home() {
             <li>
               <a href="#berita" onClick={() => scrollToSection("berita")}>
                 Berita
+              </a>
+            </li>
+            <li>
+              <a href="#galeri" onClick={() => scrollToSection("galeri")}>
+                Galeri
               </a>
             </li>
             <li>
@@ -184,23 +189,22 @@ export default function Home() {
         <a href="#beranda" onClick={() => scrollToSection("beranda")}>
           Beranda
         </a>
-        <a href="#profil" onClick={() => scrollToSection("profil")}>
-          Profil
-        </a>
+
         <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
           Pemerintahan
         </a>
         <a href="#tentang" onClick={() => scrollToSection("tentang")}>
           Tentang
         </a>
-        <a href="#wisata" onClick={() => scrollToSection("wisata")}>
-          Wisata
-        </a>
+
         <a href="#sumber-daya" onClick={() => scrollToSection("sumber-daya")}>
           Sumber Daya
         </a>
         <a href="#berita" onClick={() => scrollToSection("berita")}>
           Berita
+        </a>
+        <a href="#galeri" onClick={() => scrollToSection("galeri")}>
+          Galeri
         </a>
         <a href="#lokasi" onClick={() => scrollToSection("lokasi")}>
           Lokasi
@@ -252,46 +256,21 @@ export default function Home() {
 
             <div className="hero-stats">
               <div className="hero-stat">
-                <div className="hero-stat-number">3+</div>
-                <div className="hero-stat-label">Destinasi Wisata</div>
+                <div className="hero-stat-number">12.5</div>
+                <div className="hero-stat-label">Luas Wilayah</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-number">5K+</div>
+                <div className="hero-stat-number">2,700+</div>
                 <div className="hero-stat-label">Penduduk</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-number">∞</div>
-                <div className="hero-stat-label">Pesona Alam</div>
+                <div className="hero-stat-number">22/6</div>
+                <div className="hero-stat-label">RT/RW</div>
               </div>
             </div>
 
             <div className="hero-buttons">
-              <button
-                className="btn-primary"
-                onClick={() => scrollToSection("wisata")}
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-                Jelajahi Wisata
-              </button>
+
               <button
                 className="btn-secondary"
                 onClick={() => scrollToSection("lokasi")}
@@ -343,74 +322,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROFIL SECTION */}
-      <section className="section" id="profil">
-        <div className="container">
-          <div className="section-header fade-in">
-            <div className="section-label">
-              <span className="section-label-line"></span>
-              Profil Kelurahan
-              <span className="section-label-line"></span>
-            </div>
-            <h2 className="section-title">
-              Visi & Misi <span className="highlight">Karatuang</span>
-            </h2>
-            <p className="section-description">
-              Mewujudkan Kelurahan Karatuang yang maju, mandiri, dan sejahtera berlandaskan kearifan lokal.
-            </p>
-          </div>
 
-          <div className="profil-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-            <div className="profil-card fade-in-left" style={{ backgroundColor: '#fff', padding: '2.5rem', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(3)' }}>
-                <Target size={100} />
-              </div>
-              <div className="profil-icon" style={{ width: '60px', height: '60px', borderRadius: '12px', backgroundColor: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <Target size={32} />
-              </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1f2937' }}>Visi</h3>
-              <p style={{ color: '#4b5563', lineHeight: '1.7' }}>
-                "Terwujudnya Masyarakat Kelurahan Karatuang yang Religius, Mandiri, Sejahtera, dan Berbudaya melalui Pelayanan Prima serta Pemanfaatan Potensi Lokal yang Berkelanjutan."
-              </p>
-            </div>
-
-            <div className="profil-card fade-in-right" style={{ backgroundColor: '#fff', padding: '2.5rem', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05, transform: 'scale(3)' }}>
-                <Flag size={100} />
-              </div>
-              <div className="profil-icon" style={{ width: '60px', height: '60px', borderRadius: '12px', backgroundColor: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <Flag size={32} />
-              </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1f2937' }}>Misi</h3>
-              <ul style={{ color: '#4b5563', lineHeight: '1.7', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <li>Meningkatkan kualitas sumber daya manusia melalui pendidikan dan kesehatan.</li>
-                <li>Meningkatkan tata kelola pemerintahan yang baik dan bersih (Good Governance).</li>
-                <li>Mendorong pertumbuhan ekonomi kerakyatan berbasis potensi lokal.</li>
-                <li>Melestarikan nilai-nilai budaya dan kearifan lokal masyarakat.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="demographics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '3rem' }}>
-            {[
-               { icon: <MapPin size={24} />, label: 'Luas Wilayah', value: '± 5.2 km²' },
-               { icon: <Users size={24} />, label: 'Total Penduduk', value: '5,000+ Jiwa' },
-               { icon: <Building2 size={24} />, label: 'Jumlah RW', value: '4 RW' },
-               { icon: <Network size={24} />, label: 'Jumlah RT', value: '12 RT' },
-            ].map((stat, i) => (
-              <div key={i} className="demo-card fade-in" style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '1rem', transitionDelay: `${i * 0.1}s` }}>
-                <div style={{ backgroundColor: '#22c55e', color: 'white', width: '48px', height: '48px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  {stat.icon}
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '0.25rem' }}>{stat.label}</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0f172a' }}>{stat.value}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PEMERINTAHAN SECTION */}
       <section className="section section-alt" id="pemerintahan">
@@ -418,88 +330,70 @@ export default function Home() {
           <div className="section-header fade-in">
             <div className="section-label">
               <span className="section-label-line"></span>
-              Struktur Organisasi
+              Pusat Pengaduan
               <span className="section-label-line"></span>
             </div>
             <h2 className="section-title">
-              Pemerintahan <span className="highlight">Karatuang</span>
+              Struktur 3 Pilar <span className="highlight">Karatuang</span>
             </h2>
             <p className="section-description">
-              Susunan organisasi dan tata kerja aparatur pemerintahan Kelurahan Karatuang dalam melayani masyarakat.
+              Pusat pengaduan melalui struktur 3 pilar Kelurahan Karatuang. Apabila ada kejadian atau permasalahan sosial segera laporkan kesini.
             </p>
           </div>
 
-          <div className="org-chart" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '3rem', position: 'relative' }}>
-            {/* Lurah */}
-            <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '2px solid #22c55e', padding: '1.5rem 2.5rem', borderRadius: '12px', textAlign: 'center', minWidth: '250px', zIndex: 2, boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-                <UserCheck size={40} />
-              </div>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Lurah</h3>
-              <p style={{ color: '#22c55e', fontWeight: '600', fontSize: '0.875rem' }}>Lurah Karatuang</p>
-            </div>
-
-            {/* Line down */}
-            <div style={{ width: '2px', height: '40px', backgroundColor: '#cbd5e1', zIndex: 1 }}></div>
+          <div className="org-chart" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '3rem', width: '100%' }}>
             
-            {/* Seklur */}
-            <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 2rem', borderRadius: '12px', textAlign: 'center', minWidth: '220px', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
-              <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-                <User size={30} />
+            {/* Pillar 1: Bhabinkamtibmas */}
+            <div className="org-node fade-in" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-xl)', overflow: 'hidden', textAlign: 'center', boxShadow: 'var(--shadow-md)', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: 'var(--primary-gradient)', padding: '1rem', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '1.25rem' }}>
+                BHABINKAMTIBMAS
               </div>
-              <h3 style={{ fontSize: '1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Seklur</h3>
-              <p style={{ color: '#64748b', fontSize: '0.875rem' }}>Sekretaris Lurah</p>
-            </div>
-
-            {/* Line down to Kasi */}
-            <div style={{ width: '2px', height: '40px', backgroundColor: '#cbd5e1', zIndex: 1 }}></div>
-            
-            {/* Horizontal Line connecting Kasi */}
-            <div style={{ display: 'flex', width: '100%', maxWidth: '900px', padding: '0 1rem' }}>
-              <div style={{ flex: 1, position: 'relative' }}>
-                <div style={{ width: '50%', height: '2px', backgroundColor: '#cbd5e1', marginLeft: 'auto' }}></div>
-                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
+              <div style={{ backgroundColor: 'var(--primary-dark)', padding: '1rem', color: 'var(--text-light)', textAlign: 'left', flexGrow: 1 }}>
+                <div style={{ marginBottom: '0.5rem' }}><strong>NAMA &nbsp; :</strong> AIPDA ARWAN HAMID</div>
+                <div><strong>TLP/WA :</strong> 0852-4051-0379</div>
               </div>
-              <div style={{ flex: 1, position: 'relative' }}>
-                <div style={{ width: '100%', height: '2px', backgroundColor: '#cbd5e1' }}></div>
-                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
-              </div>
-              <div style={{ flex: 1, position: 'relative' }}>
-                <div style={{ width: '50%', height: '2px', backgroundColor: '#cbd5e1' }}></div>
-                <div style={{ position: 'absolute', top: 0, right: '0', left: '0', margin: 'auto', width: '2px', height: '30px', backgroundColor: '#cbd5e1' }}></div>
+              <div style={{ padding: '1.5rem', display: 'flex', justifyContent: 'center', backgroundColor: 'var(--bg-secondary)' }}>
+                <div style={{ width: '150px', height: '200px', backgroundColor: 'var(--bg-tertiary)', border: '4px solid white', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', position: 'relative', overflow: 'hidden' }}>
+                  <Image src="/images/BHABINKAMTIBMAS.png" alt="Bhabinkamtibmas" fill style={{ objectFit: 'cover' }} />
+                </div>
               </div>
             </div>
 
-            {/* Kasi Cards */}
-            <div style={{ display: 'flex', width: '100%', maxWidth: '900px', padding: '0 1rem' }}>
-              <div style={{ flex: 1, padding: '0 0.5rem' }}>
-                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-                    <User size={24} />
-                  </div>
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
-                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Pemerintahan</p>
-                </div>
+            {/* Pillar 2: Kepala Lurah */}
+            <div className="org-node fade-in" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-xl)', overflow: 'hidden', textAlign: 'center', boxShadow: 'var(--shadow-md)', display: 'flex', flexDirection: 'column', transitionDelay: '0.1s' }}>
+              <div style={{ background: 'var(--primary-gradient)', padding: '1rem', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '1.25rem' }}>
+                KEPALA LURAH
               </div>
-              <div style={{ flex: 1, padding: '0 0.5rem' }}>
-                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)', transitionDelay: '0.1s' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-                    <User size={24} />
-                  </div>
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
-                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Trantib</p>
-                </div>
+              <div style={{ backgroundColor: 'var(--primary-dark)', padding: '1rem', color: 'var(--text-light)', textAlign: 'left', flexGrow: 1 }}>
+                <div style={{ marginBottom: '0.5rem' }}><strong>NAMA &nbsp; :</strong> IRWAN ARFANDI, S. E.</div>
+                <div><strong>TLP/WA :</strong> 0823-4458-1571</div>
               </div>
-              <div style={{ flex: 1, padding: '0 0.5rem' }}>
-                <div className="org-node fade-in" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', padding: '1.25rem 1rem', borderRadius: '12px', textAlign: 'center', zIndex: 2, boxShadow: '0 4px 6px rgba(0,0,0,0.02)', transitionDelay: '0.2s' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f1f5f9', margin: '0 auto 0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-                    <User size={24} />
-                  </div>
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.25rem' }}>Nama Kasi</h3>
-                  <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Kasi Pelayanan Umum</p>
+              <div style={{ padding: '1.5rem', display: 'flex', justifyContent: 'center', backgroundColor: 'var(--bg-secondary)' }}>
+                <div style={{ width: '150px', height: '200px', backgroundColor: 'var(--bg-tertiary)', border: '4px solid white', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', position: 'relative', overflow: 'hidden' }}>
+                  <Image src="/images/LURAH.png" alt="Kepala Lurah" fill style={{ objectFit: 'cover' }} />
                 </div>
               </div>
             </div>
+
+            {/* Pillar 3: Babinsa */}
+            <div className="org-node fade-in" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-xl)', overflow: 'hidden', textAlign: 'center', boxShadow: 'var(--shadow-md)', display: 'flex', flexDirection: 'column', transitionDelay: '0.2s' }}>
+              <div style={{ background: 'var(--primary-gradient)', padding: '1rem', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '1.25rem' }}>
+                BABINSA
+              </div>
+              <div style={{ backgroundColor: 'var(--primary-dark)', padding: '1rem', color: 'var(--text-light)', textAlign: 'left', flexGrow: 1 }}>
+                <div style={{ marginBottom: '0.5rem' }}><strong>NAMA &nbsp; :</strong> SERKA ABD. MAJID</div>
+                <div><strong>TLP/WA :</strong> 0853-4197-7267</div>
+              </div>
+              <div style={{ padding: '1.5rem', display: 'flex', justifyContent: 'center', backgroundColor: 'var(--bg-secondary)' }}>
+                <div style={{ width: '150px', height: '200px', backgroundColor: 'var(--bg-tertiary)', border: '4px solid white', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', position: 'relative', overflow: 'hidden' }}>
+                  <Image src="/images/BABINSA.png" alt="Babinsa" fill style={{ objectFit: 'cover' }} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="fade-in" style={{ marginTop: '3rem', backgroundColor: 'var(--bg-card)', color: 'var(--primary)', border: '3px solid var(--primary)', padding: '1rem 2rem', borderRadius: 'var(--radius-full)', textAlign: 'center', fontWeight: 'bold', fontSize: '1.25rem', boxShadow: 'var(--shadow-md)' }}>
+            APABILA ADA KEJADIAN / PERMASALAHAN SOSIAL SEGERA LAPORKAN KESINI
           </div>
         </div>
       </section>
@@ -574,94 +468,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TOURISM SECTION */}
-      <section className="section section-alt" id="wisata">
-        <div className="container">
-          <div className="section-header fade-in">
-            <div className="section-label">
-              <span className="section-label-line"></span>
-              Destinasi Wisata
-              <span className="section-label-line"></span>
-            </div>
-            <h2 className="section-title">
-              Jelajahi Pesona Alam Karatuang
-            </h2>
-            <p className="section-description">
-              Temukan keindahan alam yang masih perawan, air terjun yang
-              memukau, dan pemandangan pegunungan yang menakjubkan di Kelurahan
-              Karatuang.
-            </p>
-          </div>
 
-          <div className="tourism-grid">
-            <div className="tourism-card fade-in" style={{ transitionDelay: "0.1s" }}>
-              <Image
-                src="/images/waterfall-hero.png"
-                alt="Air Terjun Bissapu"
-                width={500}
-                height={320}
-                className="tourism-card-image"
-              />
-              <div className="tourism-card-overlay"></div>
-              <div className="tourism-card-content">
-                <div className="tourism-card-badge">
-                  <span><Waves size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Alam
-                </div>
-                <h3 className="tourism-card-title">Air Terjun Bissapu</h3>
-                <p className="tourism-card-desc">
-                  Air terjun bertingkat yang megah dengan pancuran air jernih
-                  dikelilingi batu-batu besar dan pepohonan tropis yang rindang.
-                  Spot favorit para pecinta alam.
-                </p>
-              </div>
-            </div>
-
-            <div className="tourism-card fade-in" style={{ transitionDelay: "0.2s" }}>
-              <Image
-                src="/images/waterfall-wisata.png"
-                alt="Air Terjun Erelebu"
-                width={500}
-                height={320}
-                className="tourism-card-image"
-              />
-              <div className="tourism-card-overlay"></div>
-              <div className="tourism-card-content">
-                <div className="tourism-card-badge">
-                  <span><Trees size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Alam
-                </div>
-                <h3 className="tourism-card-title">Air Terjun Erelebu</h3>
-                <p className="tourism-card-desc">
-                  Pesona air terjun alami yang tersembunyi di tengah hutan
-                  belantara. Suara gemericik air yang menenangkan dan udara
-                  pegunungan yang segar.
-                </p>
-              </div>
-            </div>
-
-            <div className="tourism-card fade-in" style={{ transitionDelay: "0.3s" }}>
-              <Image
-                src="/images/village-culture.png"
-                alt="Wisata Budaya Karatuang"
-                width={500}
-                height={320}
-                className="tourism-card-image"
-              />
-              <div className="tourism-card-overlay"></div>
-              <div className="tourism-card-content">
-                <div className="tourism-card-badge">
-                  <span><Palette size={16} style={{display: 'inline-block', verticalAlign: 'text-bottom'}} /></span> Wisata Budaya
-                </div>
-                <h3 className="tourism-card-title">Kampung Budaya</h3>
-                <p className="tourism-card-desc">
-                  Nikmati kekayaan budaya masyarakat Karatuang dengan rumah
-                  tradisional, upacara adat, dan keramahan penduduk lokal yang
-                  tak terlupakan.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* RESOURCES SECTION */}
       <section className="section" id="sumber-daya">
@@ -732,6 +539,31 @@ export default function Home() {
                   <span className="resource-tag">Cengkeh</span>
                   <span className="resource-tag">Cokelat</span>
                   <span className="resource-tag">Kelapa</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="resource-card fade-in" style={{ transitionDelay: "0.3s" }}>
+              <div className="resource-card-image-wrapper">
+                <Image
+                  src="/images/village-culture.png"
+                  alt="Peternakan Karatuang"
+                  width={400}
+                  height={200}
+                  className="resource-card-image"
+                />
+                <div className="resource-card-icon-badge"><Bird size={24} /></div>
+              </div>
+              <div className="resource-card-body">
+                <h3 className="resource-card-title">Peternakan</h3>
+                <p className="resource-card-desc">
+                  Masyarakat Karatuang juga aktif dalam sektor peternakan yang meliputi sapi, kambing, dan berbagai jenis unggas. Sektor ini mendukung ketahanan pangan lokal.
+                </p>
+                <div className="resource-card-tags">
+                  <span className="resource-tag">Sapi</span>
+                  <span className="resource-tag">Kambing</span>
+                  <span className="resource-tag">Ayam</span>
+                  <span className="resource-tag">Itik</span>
                 </div>
               </div>
             </div>
@@ -834,6 +666,48 @@ export default function Home() {
                 <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>Belum ada berita atau kegiatan yang dipublikasikan.</p>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY SECTION */}
+      <section className="section" id="galeri">
+        <div className="container">
+          <div className="section-header fade-in">
+            <div className="section-label">
+              <span className="section-label-line"></span>
+              Galeri Foto
+              <span className="section-label-line"></span>
+            </div>
+            <h2 className="section-title">Potret Karatuang</h2>
+            <p className="section-description">
+              Kumpulan foto yang merekam keindahan alam, kegiatan masyarakat, dan momen penting di Kelurahan Karatuang.
+            </p>
+          </div>
+
+          <div className="gallery-masonry">
+            {galeriList.length > 0 ? (
+              galeriList.map((item, index) => (
+                <div key={item.id} className="gallery-item fade-in" style={{ transitionDelay: `${(index % 6) * 0.1}s` }}>
+                  <img
+                    src={item.image_url}
+                    alt={item.title || `Galeri Karatuang ${index + 1}`}
+                    className="gallery-image"
+                    loading="lazy"
+                  />
+                </div>
+              ))
+            ) : (
+              <div style={{ textAlign: 'center', padding: '3rem', color: '#6b7280' }}>
+                Belum ada foto galeri.
+              </div>
+            )}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link href="/galeri" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              Lihat Semua Galeri <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>

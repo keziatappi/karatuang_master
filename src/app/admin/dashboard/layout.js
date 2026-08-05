@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import LogoutButton from '@/components/LogoutButton';
-import { Home, Newspaper, Users } from 'lucide-react';
+import { Home, Newspaper, Image as ImageIcon } from 'lucide-react';
 
 export const metadata = {
   title: 'Admin Dashboard - Karatuang',
@@ -30,8 +30,8 @@ export default function DashboardLayout({ children }) {
           <Link href="/admin/dashboard/berita" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
             <Newspaper size={20} /> Berita & Kegiatan
           </Link>
-          <Link href="/admin/dashboard/perangkat" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
-            <Users size={20} /> Perangkat Kelurahan
+          <Link href="/admin/dashboard/galeri" style={{ color: '#e5e7eb', textDecoration: 'none', padding: '0.75rem', borderRadius: '6px', display: 'flex', alignItems: 'center', gap: '0.75rem', transition: 'background-color 0.2s' }}>
+            <ImageIcon size={20} /> Galeri Foto
           </Link>
           
           <div style={{ marginTop: 'auto' }}>

@@ -12,6 +12,9 @@ export const metadata = {
       "Jelajahi keindahan alam Kelurahan Karatuang dengan wisata air terjun yang memukau, kekayaan pertanian, dan budaya masyarakat Bantaeng.",
     type: "website",
   },
+  icons: {
+    icon: '/images/bantaeng-logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {

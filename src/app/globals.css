@@ -1784,3 +1784,40 @@ button {
     grid-row: span 1;
   }
 }
+/* ========================================
+   GALLERY MASONRY SECTION
+======================================== */
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .gallery-masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-masonry {
+    column-count: 1;
+  }
+}
+
+.gallery-masonry .gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  /* Remove fixed height so it respects image aspect ratio */
+}
+
+.gallery-masonry .gallery-image {
+  width: 100%;
+  height: auto !important;
+  display: block;
+  object-fit: cover;
+}
