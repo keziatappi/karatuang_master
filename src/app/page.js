@@ -502,7 +502,7 @@ export default function Home() {
             <div className="resource-card fade-in" style={{ transitionDelay: "0.2s" }}>
               <div className="resource-card-image-wrapper">
                 <Image
-                  src="/images/plantation.png"
+                  src="/images/cengkeh.jpg"
                   alt="Perkebunan Karatuang"
                   width={400}
                   height={200}
@@ -513,15 +513,11 @@ export default function Home() {
               <div className="resource-card-body">
                 <h3 className="resource-card-title">Perkebunan</h3>
                 <p className="resource-card-desc">
-                  Dataran tinggi Karatuang ideal untuk perkebunan kopi, cengkeh,
-                  cokelat, dan kelapa. Hasil perkebunan menjadi komoditas utama
-                  ekspor daerah.
+                  Dataran tinggi Karatuang ideal untuk perkebunan cengkeh dan mangga. Hasil perkebunan menjadi komoditas utama ekspor daerah.
                 </p>
                 <div className="resource-card-tags">
-                  <span className="resource-tag">Kopi</span>
+                  <span className="resource-tag">Mangga</span>
                   <span className="resource-tag">Cengkeh</span>
-                  <span className="resource-tag">Cokelat</span>
-                  <span className="resource-tag">Kelapa</span>
                 </div>
               </div>
             </div>
