@@ -28,6 +28,24 @@ export default function RootLayout({ children }) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "GovernmentOrganization",
+              "name": "Kelurahan Karatuang",
+              "url": "https://kelurahankaratuang.com",
+              "logo": "https://kelurahankaratuang.com/images/bantaeng-logo.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bantaeng",
+                "addressRegion": "Sulawesi Selatan",
+                "addressCountry": "ID"
+              }
+            })
+          }}
+        />
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
