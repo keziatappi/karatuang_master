@@ -250,8 +250,7 @@ export default function Home() {
 
             <p className="hero-subtitle">
               Sebuah permata tersembunyi di Kabupaten Bantaeng yang menyimpan
-              keindahan alam luar biasa, kekayaan budaya, dan pesona air terjun
-              yang memukau di jantung Sulawesi Selatan.
+              keindahan alam luar biasa dan kekayaan budaya yang memukau di jantung Sulawesi Selatan.
             </p>
 
             <div className="hero-stats">
@@ -303,8 +302,8 @@ export default function Home() {
           <div className="hero-visual">
             <div className="hero-image-wrapper">
               <Image
-                src="/images/waterfall-hero.png"
-                alt="Air Terjun Karatuang Bantaeng"
+                src="/images/Pertanian2.jpeg"
+                alt="Padi"
                 width={600}
                 height={450}
                 className="hero-main-image"
@@ -405,18 +404,10 @@ export default function Home() {
             <div className="about-image-section fade-in-left">
               <div className="about-image-main">
                 <Image
-                  src="/images/village-culture.png"
-                  alt="Kehidupan masyarakat Karatuang"
+                  src="/images/bantaeng-logo.png"
+                  alt="Karatuang"
                   width={600}
                   height={420}
-                />
-              </div>
-              <div className="about-image-accent">
-                <Image
-                  src="/images/bantaeng-logo.png"
-                  alt="Logo Kabupaten Bantaeng"
-                  width={180}
-                  height={180}
                 />
               </div>
             </div>
@@ -435,14 +426,12 @@ export default function Home() {
                 Kelurahan Karatuang merupakan salah satu kelurahan yang terletak
                 di Kecamatan Bantaeng, Kabupaten Bantaeng, Provinsi Sulawesi
                 Selatan. Daerah ini dikenal dengan keindahan alamnya yang masih
-                sangat asri, dengan hamparan pegunungan hijau, air terjun yang
-                eksotis, dan udara yang sejuk.
+                sangat asri, dengan hamparan pegunungan hijau dan udara yang sejuk.
               </p>
               <p className="about-text">
                 Masyarakat Karatuang sebagian besar bermata pencaharian di
-                bidang pertanian, perkebunan, dan perikanan. Kearifan lokal
-                masyarakat yang masih terjaga menjadikan Karatuang sebagai
-                destinasi yang menarik untuk dikunjungi.
+                bidang pertanian, perkebunan, dan peternakan. Kearifan lokal
+                masyarakat yang masih terjaga menjadikan Karatuang menarik untuk dikunjungi.
               </p>
 
               <div className="about-features">
@@ -457,10 +446,6 @@ export default function Home() {
                 <div className="about-feature">
                   <div className="about-feature-icon"><Palette size={24} /></div>
                   <span>Budaya Kaya</span>
-                </div>
-                <div className="about-feature">
-                  <div className="about-feature-icon"><Droplet size={24} /></div>
-                  <span>Air Terjun Eksotis</span>
                 </div>
               </div>
             </div>
@@ -492,7 +477,7 @@ export default function Home() {
             <div className="resource-card fade-in" style={{ transitionDelay: "0.1s" }}>
               <div className="resource-card-image-wrapper">
                 <Image
-                  src="/images/agriculture.png"
+                  src="/images/Pertanian1.jpeg"
                   alt="Pertanian Karatuang"
                   width={400}
                   height={200}
@@ -504,14 +489,12 @@ export default function Home() {
                 <h3 className="resource-card-title">Pertanian</h3>
                 <p className="resource-card-desc">
                   Tanah subur Karatuang menghasilkan padi berkualitas tinggi,
-                  jagung, sayur-mayur, dan berbagai tanaman pangan. Sawah
+                  jagung, dan berbagai tanaman pangan. Sawah
                   terasering menjadi pemandangan khas daerah ini.
                 </p>
                 <div className="resource-card-tags">
                   <span className="resource-tag">Padi</span>
                   <span className="resource-tag">Jagung</span>
-                  <span className="resource-tag">Sayuran</span>
-                  <span className="resource-tag">Palawija</span>
                 </div>
               </div>
             </div>
@@ -546,7 +529,7 @@ export default function Home() {
             <div className="resource-card fade-in" style={{ transitionDelay: "0.3s" }}>
               <div className="resource-card-image-wrapper">
                 <Image
-                  src="/images/village-culture.png"
+                  src="/images/peternakan.jpg"
                   alt="Peternakan Karatuang"
                   width={400}
                   height={200}
@@ -557,13 +540,10 @@ export default function Home() {
               <div className="resource-card-body">
                 <h3 className="resource-card-title">Peternakan</h3>
                 <p className="resource-card-desc">
-                  Masyarakat Karatuang juga aktif dalam sektor peternakan yang meliputi sapi, kambing, dan berbagai jenis unggas. Sektor ini mendukung ketahanan pangan lokal.
+                  Masyarakat Karatuang juga aktif dalam sektor peternakan. Sektor ini mendukung ketahanan pangan lokal.
                 </p>
                 <div className="resource-card-tags">
-                  <span className="resource-tag">Sapi</span>
-                  <span className="resource-tag">Kambing</span>
                   <span className="resource-tag">Ayam</span>
-                  <span className="resource-tag">Itik</span>
                 </div>
               </div>
             </div>
@@ -791,8 +771,7 @@ export default function Home() {
           <div className="cta-content fade-in">
             <h2>Kunjungi Karatuang Sekarang</h2>
             <p>
-              Rasakan sendiri keindahan alam, kehangatan masyarakat, dan pesona
-              wisata yang tak terlupakan di Kelurahan Karatuang, Bantaeng.
+              Rasakan sendiri keindahan alam dan kehangatan masyarakat yang tak terlupakan di Kelurahan Karatuang, Bantaeng.
             </p>
             <button
               className="btn-cta"
@@ -841,21 +820,10 @@ export default function Home() {
               </div>
               <p className="footer-desc">
                 Website resmi Kelurahan Karatuang, Kecamatan Bantaeng, Kabupaten
-                Bantaeng, Sulawesi Selatan. Menyajikan informasi wisata, sumber
-                daya, dan profil kelurahan.
+                Bantaeng, Sulawesi Selatan. Menyajikan informasi sumber daya alam, dan profil kelurahan.
               </p>
               <div className="footer-social">
-                <a href="#" aria-label="Facebook">
-                  <svg
-                    width="18"
-                    height="18"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Instagram">
+                <a href="https://www.instagram.com/kelurahankaratuang" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <svg
                     width="18"
                     height="18"
@@ -863,16 +831,6 @@ export default function Home() {
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                  </svg>
-                </a>
-                <a href="#" aria-label="YouTube">
-                  <svg
-                    width="18"
-                    height="18"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
               </div>
@@ -887,11 +845,6 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="#profil" onClick={() => scrollToSection("profil")}>
-                    Profil
-                  </a>
-                </li>
-                <li>
                   <a href="#pemerintahan" onClick={() => scrollToSection("pemerintahan")}>
                     Pemerintahan
                   </a>
@@ -902,11 +855,6 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="#wisata" onClick={() => scrollToSection("wisata")}>
-                    Wisata
-                  </a>
-                </li>
-                <li>
                   <a
                     href="#sumber-daya"
                     onClick={() => scrollToSection("sumber-daya")}
@@ -914,23 +862,20 @@ export default function Home() {
                     Sumber Daya
                   </a>
                 </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="footer-heading">Wisata</h4>
-              <ul className="footer-links">
                 <li>
-                  <a href="#wisata">Air Terjun Bissapu</a>
+                  <a href="#berita" onClick={() => scrollToSection("berita")}>
+                    Berita
+                  </a>
                 </li>
                 <li>
-                  <a href="#wisata">Air Terjun Erelebu</a>
+                  <a href="#galeri" onClick={() => scrollToSection("galeri")}>
+                    Galeri
+                  </a>
                 </li>
                 <li>
-                  <a href="#wisata">Kampung Budaya</a>
-                </li>
-                <li>
-                  <a href="#wisata">Pegunungan</a>
+                  <a href="#lokasi" onClick={() => scrollToSection("lokasi")}>
+                    Lokasi
+                  </a>
                 </li>
               </ul>
             </div>
@@ -962,18 +907,12 @@ export default function Home() {
               </div>
               <div className="footer-contact-item">
                 <svg
-                  fill="none"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
-                <span>info@karatuang.bantaengkab.go.id</span>
+                <span>@kelurahankaratuang</span>
               </div>
               <div className="footer-contact-item">
                 <svg
@@ -988,7 +927,7 @@ export default function Home() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>(0413) 21XXX</span>
+                <span>0823-4458-1571</span>
               </div>
             </div>
           </div>
@@ -999,7 +938,7 @@ export default function Home() {
             <span>
               © 2026 Kelurahan Karatuang, Bantaeng. Hak Cipta Dilindungi.
             </span>
-            <span>Dibuat dengan ❤️ untuk masyarakat Karatuang</span>
+            <span>Dibuat oleh Mahasiswa KKN Unhas Gelombang 116 untuk Masyarakat Karatuang</span>
           </div>
         </div>
       </footer>
