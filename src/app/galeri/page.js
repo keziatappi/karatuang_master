@@ -3,8 +3,13 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 export const metadata = {
-  title: 'Galeri Karatuang',
-  description: 'Kumpulan foto dan potret dokumentasi Kelurahan Karatuang',
+  title: 'Galeri Karatuang | Kelurahan Karatuang',
+  description: 'Kumpulan foto dan potret dokumentasi keindahan alam serta kegiatan masyarakat Kelurahan Karatuang.',
+  openGraph: {
+    title: 'Galeri Karatuang | Kelurahan Karatuang',
+    description: 'Kumpulan foto dan potret dokumentasi keindahan alam serta kegiatan masyarakat Kelurahan Karatuang.',
+    type: 'website',
+  }
 };
 
 export const revalidate = 60; // Revalidate every 60 seconds

@@ -2,6 +2,38 @@ import { createClient } from '@/utils/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const supabase = await createClient();
+  
+  const { data: berita } = await supabase
+    .from('berita')
+    .select('*')
+    .eq('id', resolvedParams.id)
+    .single();
+
+  if (!berita) {
+    return {
+      title: 'Berita Tidak Ditemukan | Kelurahan Karatuang',
+    };
+  }
+
+  const plainTextContent = berita.content 
+    ? berita.content.replace(/<[^>]+>/g, '').substring(0, 150) + '...' 
+    : 'Berita dan informasi terbaru dari Kelurahan Karatuang.';
+
+  return {
+    title: `${berita.title} | Kelurahan Karatuang`,
+    description: plainTextContent,
+    openGraph: {
+      title: `${berita.title} | Kelurahan Karatuang`,
+      description: plainTextContent,
+      images: berita.image_url ? [berita.image_url] : [],
+      type: 'article',
+    },
+  };
+}
+
 export default async function BeritaDetail({ params }) {
   const resolvedParams = await params;
   const supabase = await createClient();

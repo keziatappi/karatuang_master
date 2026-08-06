@@ -1,6 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL('https://kelurahankaratuang.com'),
   title: "Kelurahan Karatuang - Bantaeng, Sulawesi Selatan",
   description:
     "Website resmi Kelurahan Karatuang, Kecamatan Bantaeng, Kabupaten Bantaeng, Sulawesi Selatan. Jelajahi keindahan alam, wisata air terjun, dan potensi sumber daya alam daerah Karatuang.",
