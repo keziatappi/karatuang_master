@@ -1,9 +1,19 @@
 import { createClient } from '@/utils/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { revalidatePath } from 'next/cache';
 
 export default async function GaleriPage() {
   const supabase = await createClient();
+
+  async function deleteGaleri(formData) {
+    'use server';
+    const id = formData.get('id');
+    const supabaseClient = await createClient();
+    await supabaseClient.from('galeri').delete().eq('id', id);
+    revalidatePath('/admin/dashboard/galeri');
+    revalidatePath('/');
+  }
 
   const { data: galeri, error } = await supabase
     .from('galeri')
@@ -71,12 +81,15 @@ export default async function GaleriPage() {
                     {new Date(item.created_at).toLocaleDateString('id-ID')}
                   </td>
                   <td style={{ padding: '1rem', textAlign: 'right' }}>
-                    <button 
-                      style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', fontWeight: '500' }}
-                      // Note: In a real app this would call a server action or API to delete
-                    >
-                      Hapus
-                    </button>
+                    <form action={deleteGaleri}>
+                      <input type="hidden" name="id" value={item.id} />
+                      <button 
+                        type="submit"
+                        style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', fontWeight: '500' }}
+                      >
+                        Hapus
+                      </button>
+                    </form>
                   </td>
                 </tr>
               ))
