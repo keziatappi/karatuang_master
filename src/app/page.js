@@ -243,14 +243,13 @@ export default function Home() {
             </div>
 
             <h1 className="hero-title">
-              Kelurahan
+              Selamat Datang di Portal Resmi
               <br />
-              <span className="highlight">Karatuang</span>
+              Kelurahan <span className="highlight">Karatuang</span>
             </h1>
 
             <p className="hero-subtitle">
-              Sebuah permata tersembunyi di Kabupaten Bantaeng yang menyimpan
-              keindahan alam luar biasa dan kekayaan budaya yang memukau di jantung Sulawesi Selatan.
+              Pusat informasi dan pelayanan masyarakat. Jelajahi potensi alam, kekayaan budaya, serta kabar terbaru dari Kelurahan Karatuang, Kabupaten Bantaeng.
             </p>
 
             <div className="hero-stats">
@@ -313,8 +312,8 @@ export default function Home() {
             <div className="hero-float-card">
               <div className="hero-float-icon green"><Leaf size={24} /></div>
               <div className="hero-float-text">
-                <strong>Surga Tersembunyi</strong>
-                <span>Keindahan alam yang masih alami</span>
+                <strong>Potensi Alam</strong>
+                <span>Kekayaan agrikultur dan perkebunan</span>
               </div>
             </div>
           </div>
