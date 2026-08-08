@@ -642,6 +642,12 @@ export default function Home() {
               </div>
             )}
           </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link href="/berita" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              Lihat Semua Berita <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </section>
 
